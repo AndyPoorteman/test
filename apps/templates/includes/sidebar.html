@@ -1,0 +1,79 @@
+{% load static %}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<nav class="sidebar sidebar-offcanvas" id="sidebar" >
+        <ul class="nav">
+          <li class="nav-item nav-category">Data</li>
+          
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+              <i class="menu-icon mdi mdi-card-text-outline"></i>
+              <span class="menu-title">Charts</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="charts">
+            <ul class="nav flex-column sub-menu">
+            {% for flux in influx %}  
+	    	      {% if flux.client_id.id == userid %}               
+                <li class="nav-item"> <a class="nav-link" href=../{{flux.page}}>{{flux.site}}</a></li>
+              {% endif %} 
+            {% endfor %}
+          </ul>
+            </div>
+            
+          </li>
+      <style>
+      </style>
+      
+      {% if valid %}
+          <li class="nav-item">
+            <a  onclick="document.getElementById('id01').style.display='block'" class="nav-link"  aria-expanded="false" aria-controls="downloads"href=#>
+              <i class="menu-icon mdi mdi-download"></i>
+              
+                <span class="menu-title">Download</span>
+              
+            </a>
+          </li>          
+          <div id="id01" class="w3-modal w3-round-xlarge">
+            <div class="w3-modal-content w3-round-xlarge"style="text-align: center;
+            width: 25%;">
+      
+          <header class="w3-container w3-teal" style="border-radius:15px 15px 0px 0px">
+            <span onclick="document.getElementById('id01').style.display='none'"
+            class="w3-button w3-round-xlarge w3-display-topright">&times;</span>
+            <h2>Download : {% for flux in influx %}  
+              {% if flux.client_id.id == userid  and flux.page == url_parameter %}               
+                <h2>{{flux.site}}</h2>
+              {% endif %} 
+            {% endfor %}</h2>
+          </header>
+      
+          <div class="w3-container w3-round">
+          <form action="{% url 'download' %}" method="post">
+                      {% csrf_token %}
+                      <input type="text" id="config-demo2" class="form-control"name="ddl-date" >
+                      
+                      <input type="submit" input="Download" value="Download">
+                    </form>     
+                    
+          </div>
+      
+          <footer class="w3-container w3-teal"style="border-radius: 0px 0px 15px 15px">
+            <p>The default timerange is set to 24h .</p>
+          </footer>
+      
+        </div>
+      </div>{% endif %}
+
+             
+          <li class="nav-item nav-category">Links</li>
+          <li class="nav-item">
+            <a target="_blank" class="nav-link" href="mailto:support@b-sens.be">
+              <i class="menu-icon mdi mdi-information"></i>
+              <span class="menu-title">Get Support</span>
+            </a>
+          </li>          
+        </ul>
+      </nav>

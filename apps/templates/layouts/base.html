@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static %}
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>
+    {% block title %}B_Sens Connect{% endblock %} 
+</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+          <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="/static/assets/vendors/feather/feather.css">
+  <link rel="stylesheet" href="/static/assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="/static/assets/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="/static/assets/vendors/typicons/typicons.css">
+  <link rel="stylesheet" href="/static/assets/vendors/simple-line-icons/css/simple-line-icons.css">
+  <link rel="stylesheet" href="/static/assets/vendors/css/vendor.bundle.base.css">
+
+  <!-- Specific CSS Plugins goes HERE  -->
+  {% block css_plugins %}<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="/static/assets/js/select.dataTables.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>{% endblock css_plugins %}
+
+  <link rel="stylesheet" href="/static/assets/css/vertical-layout-light/style.css">
+  <link rel="shortcut icon" href="/static/assets/images/thumbnail_Bsens-rmv.png" />
+
+  <!-- Specific Page CSS goes HERE  -->
+  {% block stylesheets %}{% endblock stylesheets %}
+
+</head>
+<body>
+  <div class="container-scroller"> 
+
+    {% include 'includes/navigation.html' %}
+
+    <div class="container-fluid page-body-wrapper">
+      
+      
+
+      {% include 'includes/sidebar.html' %}
+
+      <div class="main-panel">
+
+        {% block content %}{% endblock content %}
+        
+        {% include 'includes/footer.html' %}
+
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <script src="/static/assets/vendors/js/vendor.bundle.base.js"></script>
+
+  <!-- Specific JS Plugins goes HERE  -->
+  {% block js_plugins %}{% endblock js_plugins %}
+
+  <script src="/static/assets/js/off-canvas.js"></script>
+  <script src="/static/assets/js/hoverable-collapse.js"></script>
+  <script src="/static/assets/js/template.js"></script>
+  <script src="/static/assets/js/settings.js"></script>
+  <script src="/static/assets/js/todolist.js"></script>
+
+  <!-- Specific Page JS goes HERE  -->
+  {% block javascripts %}{% endblock javascripts %}
+
+</body>
+</html>
